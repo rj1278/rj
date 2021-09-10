@@ -4,7 +4,7 @@ import cv2
 
 img= cv2.imread('color_image.jpg')
 index=["color", "color_name", "hex", "R", "G", "B"]
-csv = pd.read_csv('colors.csv', names=index, header=None)
+csv = pd.read_csv('D:/Mygit/api/rj/HowIsIt/colors.csv', names=index, header=None)
 clicked = False
 r = g = b = xpos = ypos = 0
 
