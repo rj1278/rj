@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'boostrap.min.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <h4 class="text-center text-primary">Library Management System</h4>
+        </div>
+        
+        <h5 class="text-end text-info"><a href="{% url 'login' %}">For Admin user</a></h5>
+        <h4 class="text-center text-info">List Of Available Books</h4>
+        <div class="row justify-content-center">
+            
+            <div class="">
+                <table class="table table-bordered table-info">
+                    <thead>
+                        <tr>
+                            <td>S.No</td>
+                            <td>Book name</td>
+                            <td>Author</td>
+                            <td>Category</td>
+                            <td>Serial No</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in books %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.book_name }}</td>
+                            <td>{{ i.author }}</td>
+                            <td>{{ i.category }}</td>
+                            <td>{{ i.serial_no }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+              
+            </div>
+        </div>
+    </div>    
+
+</body>
+
+</html>

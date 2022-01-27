@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bookview</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'boostrap.min.js' %}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h5 class="text-lg-center text-primary">Book View</h5>
+        </div>
+        <div class="row justify-content-center">
+            <div class=" col-5">
+                <form action="" method="post">
+                    {% csrf_token %}
+                <label for="">Book Name</label><input type="text" class="form-control" name="book_name">
+                <label for="">Author</label><input type="text" class="form-control" name="author">
+                <label for="">Category</label><input type="text" class="form-control" name="category">
+                <label for="">Serial number</label><input type="text" class="form-control" name="serial_no">
+                <button class="btn btn-info "  type="submit">Save</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-lg-3">
+        <h5 class="text-sm-center text-primary"> List Of books </h5>
+        <div class="col-10">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>S.No</td>
+                        <td>Book name</td>
+                        <td>Author</td>
+                        <td>Category</td>
+                        <td>Serial No</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in books %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.book_name }}</td>
+                        <td>{{ i.author }}</td>
+                        <td>{{ i.category }}</td>
+                        <td>{{ i.serial_no }}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                    <form action="{% url 'delete_book' %}" method="post">
+                                        {% csrf_token %}
+                                        <button value="{{ i.id }}" name="id" class="btn btn-danger" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                                <div class="col">
+                                        <button onclick="update()"  class="btn btn-primary" type="button">Edit</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

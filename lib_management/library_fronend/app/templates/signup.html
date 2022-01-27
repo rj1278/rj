@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'boostrap.min.js' %}"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <h4 class="text-center text-primary">Create New User</h4>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="">username</label><input type="text" required class="form-control" name="username">
+                    <label for="">First Name</label><input type="text"required class="form-control" name="first_name">
+                    <label for="">Last Name</label><input type="text" required class="form-control" name="last_name">
+                    <label for="">Email</label><input type="email" required class="form-control" name="email">
+                    <label for="">Password</label><input type="password" required class="form-control" name="password">
+                    <label for="">Retype Password</label><input type="password" required class="form-control" name="password2">
+                    <div class="row justify-content-center mt-lg-2"> <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <h4 class="text-center text-primary"><a href="{% url 'login' %}">Go to Sign In</a></h4>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>
