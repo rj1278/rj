@@ -1,3 +1,4 @@
+from ast import Assert
 from importlib_metadata import re
 from rest_framework.schemas.openapi import AutoSchema
 from django.http import response
@@ -113,6 +114,16 @@ class UpdateViewset(viewsets.GenericViewSet):
 
 
 
+from rest_framework.views import APIView
+from rest_framework_xml.renderers import XMLRenderer
 
+
+class SchoolView(APIView):
+    renderer_classes = [XMLRenderer, ]
+
+    def get(self, request):
+        schools = Assert.objects.all()
+        school_serializer = (schools, many=True)
+        return Response(school_serializer.data)
 
 

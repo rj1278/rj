@@ -1,3 +1,6 @@
+from ast import Assert
+import imp
+from xml.dom import xmlbuilder
 from django.shortcuts import render
 from rest_framework import status,renderers
 from django.http import FileResponse
@@ -65,14 +68,14 @@ class ExampleViewSet(viewsets.GenericViewSet):
         return response
 
 
-import requests
-url='http://192.168.43.171:8081/library/book/delete_book/?id=2'
-res=requests.delete(url)
-print(res.text)
+# import requests
+# url='http://192.168.43.171:8081/library/book/delete_book/?id=2'
+# res=requests.delete(url)
+# print(res.text)
 
 
 
-print(Student.objects.get(first_name__contains='ha'))
+# print(Student.objects.get(first_name__contains='ha'))
 
 # a = 10
 # b = 200
@@ -102,6 +105,15 @@ def find_max(arr):
 print(max([find_max(a),find_max(b),find_max(c),find_max(d)]))
         
 
+# xml renderer
+from rest_framework_xml.renderers import XMLRenderer
+from rest_framework.views import APIView
 
+class SchoolView(APIView):
+    renderer_classes=[XMLRenderer,]
+    def get(self, request):
+        schools = Student.objects.all()
+        school_serializer = StudentSerializer(schools, many=True)
+        return Response(school_serializer.data)
 
     

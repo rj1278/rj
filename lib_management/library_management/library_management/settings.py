@@ -52,6 +52,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework_xml.parsers.XMLParser',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework_xml.renderers.XMLRenderer',
+    ],
+}
+
+
 ROOT_URLCONF = 'library_management.urls'
 
 TEMPLATES = [

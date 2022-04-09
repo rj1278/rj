@@ -10,6 +10,7 @@ router.register('download',views.ExampleViewSet)
 urlpatterns = [
     path('assest', views.StudentList.as_view()),
     path('assest/<int:pk>/', views.StudentDetail.as_view()),
-    path('file',include(router.urls))
+    path('file',include(router.urls)),
+    path('test',views.SchoolView.as_view())
     
 ]
