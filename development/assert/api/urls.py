@@ -12,5 +12,9 @@ urlpatterns = [
     path('assest/<int:pk>/', views.StudentDetail.as_view()),
     path('file',include(router.urls)),
     path('test',views.SchoolView.as_view())
+
+
     
 ]
+
+# dfbgdfg
